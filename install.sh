@@ -41,7 +41,7 @@ if [ ! -f "Discord.deb" ]; then
     wget -O Discord.deb https://discordapp.com/api/download?platform=linux&format=deb
     
     dpkg -i Discord.deb
-    apt --fix-broken install<
+    apt --fix-broken install
     dpkg -i Discord.deb
 fi
 
