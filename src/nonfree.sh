@@ -5,3 +5,5 @@ while read line; do
     fi
     echo $line >> /etc/apt/sources.list
 done < /etc/apt/sources.list.old
+
+apt-get update

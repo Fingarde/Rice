@@ -1,3 +1,4 @@
+./src/nonfree.sh
 ./src/sudo.sh
 
 ./src/nvidia.sh

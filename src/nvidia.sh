@@ -1,14 +1,12 @@
-./nonfree.sh
-
 apt-get -y remove nvidia*
 apt-get -y autoremove
 
 apt-get update
-apt-get install dkms build-essential linux-headers-$(uname -r)
+apt-get install -y dkms build-essential linux-headers-$(uname -r)
 
 dpkg --add-architecture i386
 apt-get update
-apt-get install lib32z1 lib32ncurses5
+apt-get install -y lib32z1 lib32ncurses5
 apt-get update
 
 echo "blacklist nouveau
