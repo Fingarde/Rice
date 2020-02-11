@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+dir=$(realpath $(dirname $0))
+src=$dir/src
+res=$dir/res
+
+gpu=$(lspci | grep ' VGA ' | rev | cut -d ":" -f 1 | rev)
+user=$(ps au | cut -d " " -f 1 | sort | uniq -d | grep -v "root")
+
+if echo $user | grep "^$" > /dev/null || echo $user | grep " " > /dev/null; then
+    echo "User not found please type username"
+    read user
+fi
+
+clearff
+sleep 0.25s
+
+for((i=3; i>0; i--)); do
+    printf "\rWelcome $user, installing rice in $i"
+    sleep 1s
+done
+
+echo ""
+
+$src/desktop-environment $user $res
+apt install -y sudo
+sudo adduser $user sudo
+
+if echo $gpu | grep -i "nvidia" > /dev/null; then
+    echo $src/nvidia
+fi
+

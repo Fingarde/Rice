@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+res=$2
+home=/home/$1
+config=$home/.config
+
+apt install -y xorg i3 gdm3 rofi kitty
+
+mkdir $config
+mkdir $config/i3 $config/kitty $config/rofi
+
+[[ -f $config/i3/config && ! -h $config/i3/config ]] && mv $config/i3/config $config/i3/config.old
+ln -s $res/i3 $config/i3/config
+
+[[ -f $config/kitty/config && ! -h $config/kitty/config ]] && mv $config/kitty/config $config/kitty/config.old
+ln -s $res/kitty $config/kitty/config
+
+[[ -f $config/rofi/config && ! -h $config/rofi/config ]] && mv $config/rofi/config $config/rofi/config.old
+ln -s $res/rofi $config/rofi/config
+
+[[ -f $home/.zshrc && ! -h $home/.zshrc ]] && mv $home/.zshrc $home/.zshrc.old
+ln -s $res/.shrc $home/.zshrc
+
+[[ -f $home/.shrc && ! -h $home/.shrc ]] && mv $home/.shrc $home/.shrc.old
+ln -s $res/.shrc $home/.shrc
+
+[[ -f $home/.bashrc && ! -h $home/.bashrc ]] && mv $home/.bashrc $home/.bashrc.old
+ln -s $res/.shrc $home/.bashrc
+
