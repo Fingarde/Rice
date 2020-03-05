@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+install xorg-server xorg-xinit xorg-xinput
+install i3 compton rofi polybar
+install binutils ttf-dejavu xorg-fonts noto-fonts-all
+
+rm -rf $home/.config/i3 2> /dev/null
+rm -rf $home/.config/rofi 2> /dev/null
+rm -rf $home/.config/polybar 2> /dev/null
+
+mkdir $home/.config/i3
+mkdir $home/.config/rofi
+mkdir $home/.config/polybar
+
+ln -s $res/i3 $home/.config/i3
+ln -s $res/i3 $home/.config/rofi
+ln -s $res/i3 $home/.config/polybar
+
